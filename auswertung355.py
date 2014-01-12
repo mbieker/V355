@@ -165,3 +165,11 @@ print peak1freq
 print "peak2freq:"
 print peak2freq
 
+
+"AUFGABENTEIL VORBEREITUNG UND JUSTIERUNG:"
+"Berechnung Vergleich der Resonanzfrequenzen:"
+fFein=30700
+fTheorie=30492.5990436
+vergleich=abs((fFein/fTheorie-1)*100)
+print "VORBEREITUNG VERGLEICH:"
+print vergleich
