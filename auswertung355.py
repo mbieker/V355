@@ -84,15 +84,15 @@ def lin_reg(x,y):
     b_err= m_err * sqrt(sumxx/N)
     return m,b,m_err,b_err
 
-    
-mess_b = loadtxt("Abb/aufg_b")
-mess_c = loadtxt("Abb/aufg_c")
+
 
 "AUFGABENTEIL A"
 "Experimentelle Werte:"
 aCk=array([2.03,3.00,4.00,5.02,6.47,8.00,9.99])
 aVerhaeltnis=array([3.5,4.5,6.5,8,9.75,11,13])
-Ck = aCk / 1000000000
+Cka = aCk / 1000000000
+bcCk=array([2.03,3.00,4.00,5.02,6.47,8.00,9.99])
+Ck=bcCk/1000000000
 "Theoretische Werte berechnen:"
 L = 0.032351 
 
@@ -100,12 +100,13 @@ C = 0.0000000008051
 
 Csp = 0.000000000037
 
+print "Aufgabenteil A:"
 print "nuePlus:"
 nuePlus = 1/(2*math.pi*(L*(C+Csp))**(0.5))
 print nuePlus
 
 print "nueMinus:"
-nueMinus=1/(2*math.pi*sqrt(L*((1/C)+(2/Ck))**(-1)+L*Csp))
+nueMinus=1/(2*math.pi*sqrt(L*((1/C)+(2/Cka))**(-1)+L*Csp))
 print nueMinus
 
 print "nueMittel:"
@@ -126,3 +127,40 @@ print abweichungen
 
 
 
+"AUFGABENTEIL B"
+"Theoretisch berechnete Werte:"
+print "Aufgabenteil B:"
+print "nuePlus"
+print nuePlus
+print "nueMinus"
+print nueMinus
+"Experimentell bestimmte Werte:"
+exnuePlus=array([30490,30490,30490,30490,30490,30490,30490])
+exnueMinus=array([40010,37300,35760,34780,33880,33280,33750])
+abwPlusTeilB=abs(exnuePlus/nuePlus)
+abwMinusTeilB=abs(exnueMinus/nueMinus)
+print "Abweichung in Prozent von Nue+"
+print abwPlusTeilB
+print "Abweichung in Prozent von Nue-"
+print abwMinusTeilB
+
+
+
+"AUFGABENTEIL C"
+"Messwerte:"
+time=21
+flow=3800
+fhigh=74200
+peak1time=9
+peak2time=array([13.7,11.8,10.9,10.5,10.1,9.9,9.5,9.5])
+peak1=array([1.22,1.25,1.25,1.3,1.33,1.4,1.46,1.55])
+peak2=array([0.9,1.02,1.1,1.15,1.19,1.3,1.34,1.43])
+
+print "Aufgabenteil C:"
+"Peakzeiten auf Frequenzen umrechnen:"
+peak1freq=(70400*9/21)+3800
+peak2freq=(70400*peak2time/21) +3800
+print "peak1freq"
+print peak1freq
+print "peak2freq:"
+print peak2freq
