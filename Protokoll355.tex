@@ -1,0 +1,90 @@
+\documentclass[11pt,ngerman,a4paper]{article}
+%Gummi|061|=)
+\usepackage{amsmath}
+\usepackage{a4wide}
+\usepackage{amsthm}
+\usepackage{amsbsy}
+\usepackage{amssymb}
+\usepackage{inputenc}
+\usepackage{rotating} 
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{selinput}
+\SelectInputMappings{%
+adieresis={ä},
+germandbls={ß},
+}
+\title{\textbf{Versuch V355: Gekoppelte Schwingkreise}}
+\author{Martin Bieker\\
+		Julian Surmann\\
+		\\
+		Durchgef\"{u}hrt am 09.01.2014\\
+		Tu Dortmund}
+\date{}
+\usepackage{graphicx}
+\begin{document}
+\renewcommand\tablename{Tabelle}
+\renewcommand\figurename{Abbildung}
+\maketitle
+\thispagestyle{empty}
+\newpage
+\clearpage
+\setcounter{page}{1}
+
+
+\section{Einleitung}
+Der folgende Versuch gekoppelte Oszillatoren untersucht werden. Bei diesen Systemen handelt es sich um schwingfähige Systeme, welche miteinander in Welchselwirkung stehen und so Energie austauschen können. 
+
+\section{Theorie}
+\begin{equation}
+\nu^+ = \frac{1}{2 \pi \sqrt{LC}}
+\end{equation}
+
+\begin{equation}
+\nu^- =\frac1{2\pi\sqrt{L(\frac1C + \frac2{C_K})^-1}}
+\end{equation}
+
+
+\section{Aufbau und Durchf\"{u}hrung}
+\subsection{Vorbereitungen}
+Vor Beginn der Messungen müssen die Resoanzfrequnezen beider Schwinkreise aufeinander abgestimmt werden. Dazu wird die Schaltung wie in abbildung \ref{abb1} gezeigt aufgebaut. In einem der Kreise ein Kondensator mit variabler Kapazität verbaut. Mit dem Sinusgenerator wird nun der Kreis mit konstanter Kapazi\"at angeregt. Zunächst wird mit dem Oszilloskop im YT-Betrieb die Frequenz ermittelt bei der die gemessene Spannung $U_R$ maximal wird. Dann wird das Oszilloskop in den XY-Modus umgeschaltet die Resonanzfrequnz $\nu_{res}$ bestimmt. Diese zeichnet sich dadurch aus, dass $U_R$ und die Generatorspannung $U_0$ in Phase liegen und daher die angezeigte Lissajouz-Figur eine Gerade ist. Danach wird der Sinusgenerator an den zweiten Teil des Schwingkreises angeschlossen und mit der Frequenz $\nu_{res}$ angeregt. Nun wird auch dieser Kreis durch Verändern der variablen Kapazität in Resonanz gebracht. Dazu werden wie zuvor Lissajouz-figuren verwendet. 
+\subsection{Messung vom Schwebungs- und Schwingungsfrquenz}
+Für diesen Versuchsteil wird die Schaltung wie in Abbildung \ref{abb2} aufgebaut. Der linke Schwingkreis wird durch eine Rechteckspannung zu Schwingungen angeregt. Mit dem Oszilloskop wird nun die am Widerstand $R_??$ abfallende Spannung gemessen. So kann der im rechten Schwingkreis fließende Strom bestimmt. Bei verschieden Koppelkapazitäten $C_K$ wird nun das Verhältnis von Schwingungs- und Schwebungsfrequenz bestimmt. Dazu wird die Zahl $n$ der Schwingungsmaxima in einer Schwebungsperiode bestimmt. Es gilt:
+\begin{equation}
+\frac{\nu_{Schwingung}}{\nu_{Schwebung}} = n
+\end{equation}
+\subsection{Messung der Frequenzen der Fundamentalschwingungen}
+Des Weiteren sollen die Frequenzen $\nu_-$ und $\nu_+$ bestimmt werden. Diese zeichen sich dadurch aus, dass die Phasenverschiebung zwischen der Errgerspannung und dem im Sekundärkreis fließenden Stroms $0$ oder $\pi$ beträgt. Die oben Verwendete Schaltung wird nun mit einer Sinusspannung angeregt und die Generator auf den zweiten Kanal des Oszilloskops gelegt. So kann die Phasenbeziehung von $I$ und $U_0$ mit Hilfe von Lissajouz-Figuren untersucht werden. So werden $\nu_+$ und $\nu_-$ in Abhängikeit von $C_K$ bestimmt.
+\subsection{Messung des Stroms in Abhängigkeit von der Erregerfrequenz}
+Um den Verlauf des Stroms $I$ im Sekundärkreis bei in Abhängigkeit von der Erregerfrequenz darzustellen, wird die Schaltung wie in Abbildung \ref{wobbel} aufgebaut. Der Funktionsgenerator arbeitet im Sweep-Betreib, dass heißt die Frequenz der Errgerspannung ist nicht mehr konstant, sondern steigt in der Zeit$\Delta t = ...\,s$ von $\nu_0 = ..\,Hz$ auf $\nu_1 = ..\,Hz$. Mit der Verlauf der am Widertsand abfallenden spannung gemessen werden. Dabei wird die Zeitbasis des Oszilloskops so eingestellt, dass ein vollständiger Sweep auf dem Schirm zu sehen ist. Anfang und Ende dieses Zyklus entsprechen den Frequenzen $\nu_0$ und $\nu_1$.     
+
+
+
+\section{Auswertung}
+
+\section{Diskussion}
+Sofern nicht anders angegeben, wurden alle Fehler mit python uncertainties berechnet.
+\subsection{Vorbereitungen}
+Für die Justierung des Messaufbaus wurde mit der Grobmessung eine Frequenz von $(30.69\pm0.01)\,kHz$ ermittelt. Die feine Messung mit Hilfe der Lissajous-Figuren ergab eine Resonanzfrequenz von $(30.70\pm0.01) \, kHz$. Der mit L und C theoretisch berechnete Wert liegt bei $30.49 \, kHz$, mit einer Abweichung von $0.68 \%$ ausgezeichnet im Toleranzbereich. Allerdings wurde in der Berechnung des theoretischen Wertes die Kapazität der Spule schon berücksichtigt.
+\subsection{Messung von Schwebungs- und Schwingungsfrequenz}
+Die Perioden pro Schwebungsperiode wurden so genau wie möglich abgelesen. Der Fehler liegt bei maximal $\pm 0.5$ Perioden. Die ermittelten Werte sind der Tabelle EINFÜGEN zu entnehmen.
+
+
+\subsection{Messung der Frequenzen der Fundamentalschwingungen}
+ Zur
+\subsection{Messung des Stroms in Abhängigkeit von der Erregerfrequenz}
+
+\section{Literatur- und Abbildungsverzeichnis}
+\begin{itemize}
+\item $[1]$:Quelle
+\end{itemize}
+\section{Anhang}
+\begin{itemize}
+\item Tabellen
+\item Auszug aus dem Messheft
+
+
+\end{itemize}
+
+\newpage
+\end{document}
