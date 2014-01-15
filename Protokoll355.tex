@@ -36,27 +36,65 @@ germandbls={ß},
 Der folgende Versuch gekoppelte Oszillatoren untersucht werden. Bei diesen Systemen handelt es sich um schwingfähige Systeme, welche miteinander in Welchselwirkung stehen und so Energie austauschen können. 
 
 \section{Theorie}
+
+In diesem Versuch sollen zwei Schwingkreise untersucht werden, die über eine gemeinsame Koppelkapazität $C_K$ miteinander wechselwirken (siehe Abb \ref{theorie}). Mit Hilfe der Kirchhoffschen Gesetze kann gezeigt werden, dass der Verlauf der Ströme $I_1$ und $I_2$ durch zwei gekoppelte Differentialgleichungen zweiter Ordnung bestimmt wird. Daraus folgt, dass die $I_1$ und $I_2$ durch eine Überlagerung von zwei so genannten Fundamentalschwingungen beschreiben werden können. Diese haben die Frequenzen
+
+
 \begin{equation}
 \nu^+ = \frac{1}{2 \pi \sqrt{LC}}
 \end{equation}
-
+und 
 \begin{equation}
-\nu^- =\frac1{2\pi\sqrt{L(\frac1C + \frac2{C_K})^-1}}
+\nu^- =\frac1{2\pi\sqrt{L(\frac1C + \frac2{C_K})^-1}}.
 \end{equation}
 
+\noindent
+Im Folgenden soll der Stromverlauf für die Anfangesbedingungen
+\[
+I_1(0) = I_0 \neq 0
+\] 
+und 
+\[
+I_2(0) = 0
+\]
+untersucht werden. Zusätzlich wird angenommen, dass sich die Frequenzen $\nu_+$  und $\nu_-$ sich nur geringfügig unterscheiden. Den in diesem Fall auftretenden Schwingungsvorgang bezeichnet man als Schwebung. Dabei schwingen die Einzelkreise ungefähr mit der Frequenz $\nu_+$. Des weiteren ändert sich die Amplitude der Schwingung mit der Wesentlich geringeren Frequenz 
+\begin{equation}
+\nu_{Schwebung} = \nu_- - \nu_+
+\end{equation}
 
 \section{Aufbau und Durchf\"{u}hrung}
 \subsection{Vorbereitungen}
-Vor Beginn der Messungen müssen die Resoanzfrequnezen beider Schwinkreise aufeinander abgestimmt werden. Dazu wird die Schaltung wie in abbildung \ref{abb1} gezeigt aufgebaut. In einem der Kreise ein Kondensator mit variabler Kapazität verbaut. Mit dem Sinusgenerator wird nun der Kreis mit konstanter Kapazi\"at angeregt. Zunächst wird mit dem Oszilloskop im YT-Betrieb die Frequenz ermittelt bei der die gemessene Spannung $U_R$ maximal wird. Dann wird das Oszilloskop in den XY-Modus umgeschaltet die Resonanzfrequnz $\nu_{res}$ bestimmt. Diese zeichnet sich dadurch aus, dass $U_R$ und die Generatorspannung $U_0$ in Phase liegen und daher die angezeigte Lissajouz-Figur eine Gerade ist. Danach wird der Sinusgenerator an den zweiten Teil des Schwingkreises angeschlossen und mit der Frequenz $\nu_{res}$ angeregt. Nun wird auch dieser Kreis durch Verändern der variablen Kapazität in Resonanz gebracht. Dazu werden wie zuvor Lissajouz-figuren verwendet. 
+Vor Beginn der Messungen müssen die Resoanzfrequnezen beider Schwinkreise aufeinander abgestimmt werden. Dazu wird die Schaltung wie in abbildung \ref{abb1} gezeigt aufgebaut.
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.5]{Abb/abb1.png}
+\caption{Schaltung zur Kalibrierung der Schwingkriese}
+\label{abb1}
+\end{figure}
+In einem der Kreise ein Kondensator mit variabler Kapazität verbaut. Mit dem Sinusgenerator wird nun der Kreis mit konstanter Kapazi\"at angeregt. Zunächst wird mit dem Oszilloskop im YT-Betrieb die Frequenz ermittelt bei der die gemessene Spannung $U_R$ maximal wird. Dann wird das Oszilloskop in den XY-Modus umgeschaltet die Resonanzfrequnz $\nu_{res}$ bestimmt. Diese zeichnet sich dadurch aus, dass $U_R$ und die Generatorspannung $U_0$ in Phase liegen und daher die angezeigte Lissajouz-Figur eine Gerade ist. Danach wird der Sinusgenerator an den zweiten Teil des Schwingkreises angeschlossen und mit der Frequenz $\nu_{res}$ angeregt. Nun wird auch dieser Kreis durch Verändern der variablen Kapazität in Resonanz gebracht. Dazu werden wie zuvor Lissajouz-figuren verwendet. 
 \subsection{Messung vom Schwebungs- und Schwingungsfrquenz}
-Für diesen Versuchsteil wird die Schaltung wie in Abbildung \ref{abb2} aufgebaut. Der linke Schwingkreis wird durch eine Rechteckspannung zu Schwingungen angeregt. Mit dem Oszilloskop wird nun die am Widerstand $R_??$ abfallende Spannung gemessen. So kann der im rechten Schwingkreis fließende Strom bestimmt. Bei verschieden Koppelkapazitäten $C_K$ wird nun das Verhältnis von Schwingungs- und Schwebungsfrequenz bestimmt. Dazu wird die Zahl $n$ der Schwingungsmaxima in einer Schwebungsperiode bestimmt. Es gilt:
+Für diesen Versuchsteil wird die Schaltung wie in Abbildung \ref{abb2} aufgebaut.
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{Abb/abb2.png}
+\caption{Schaltung zur Messung des Verhältnisses von Schwebungs- zu Schwingungfrequenz }
+\label{abb2}
+\end{figure}
+ Der linke Schwingkreis wird durch eine Rechteckspannung zu Schwingungen angeregt. Mit dem Oszilloskop wird nun die am Widerstand $R$ abfallende Spannung gemessen. So kann der im rechten Schwingkreis fließende Strom bestimmt. Bei verschieden Koppelkapazitäten $C_K$ wird nun das Verhältnis von Schwingungs- und Schwebungsfrequenz bestimmt. Dazu wird die Zahl $n$ der Schwingungsmaxima in einer Schwebungsperiode bestimmt. Es gilt:
 \begin{equation}
 \frac{\nu_{Schwingung}}{\nu_{Schwebung}} = n
 \end{equation}
 \subsection{Messung der Frequenzen der Fundamentalschwingungen}
-Des Weiteren sollen die Frequenzen $\nu_-$ und $\nu_+$ bestimmt werden. Diese zeichen sich dadurch aus, dass die Phasenverschiebung zwischen der Errgerspannung und dem im Sekundärkreis fließenden Stroms $0$ oder $\pi$ beträgt. Die oben Verwendete Schaltung wird nun mit einer Sinusspannung angeregt und die Generator auf den zweiten Kanal des Oszilloskops gelegt. So kann die Phasenbeziehung von $I$ und $U_0$ mit Hilfe von Lissajouz-Figuren untersucht werden. So werden $\nu_+$ und $\nu_-$ in Abhängikeit von $C_K$ bestimmt.
+Des Weiteren sollen die Frequenzen $\nu_-$ und $\nu_+$ bestimmt werden. Diese zeichen sich dadurch aus, dass die Phasenverschiebung zwischen der Errgerspannung und dem im Sekundärkreis fließenden Stroms $0$ oder $\pi$ beträgt. Die oben Verwendete Schaltung wird nun mit einer Sinusspannung angeregt und die Generator auf den zweiten Kanal des Oszilloskops gelegt (siehe Abb. \ref{abb3}).
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{Abb/abb3.png}
+\caption{Schaltung zur Messung der Frequenzen der Fundamentalschwingungen}
+\label{abb3}
+\end{figure}
+ So kann die Phasenbeziehung von $I$ und $U_0$ mit Hilfe von Lissajouz-Figuren untersucht werden. So werden $\nu_+$ und $\nu_-$ in Abhängikeit von $C_K$ bestimmt.
 \subsection{Messung des Stroms in Abhängigkeit von der Erregerfrequenz}
-Um den Verlauf des Stroms $I$ im Sekundärkreis bei in Abhängigkeit von der Erregerfrequenz darzustellen, wird die Schaltung wie in Abbildung \ref{wobbel} aufgebaut. Der Funktionsgenerator arbeitet im Sweep-Betreib, dass heißt die Frequenz der Errgerspannung ist nicht mehr konstant, sondern steigt in der Zeit$\Delta t = ...\,s$ von $\nu_0 = ..\,Hz$ auf $\nu_1 = ..\,Hz$. Mit der Verlauf der am Widertsand abfallenden spannung gemessen werden. Dabei wird die Zeitbasis des Oszilloskops so eingestellt, dass ein vollständiger Sweep auf dem Schirm zu sehen ist. Anfang und Ende dieses Zyklus entsprechen den Frequenzen $\nu_0$ und $\nu_1$.     
+Um den Verlauf des Stroms $I$ im Sekundärkreis bei in Abhängigkeit von der Erregerfrequenz darzustellen, wird die Schaltung wie in Abbildung \ref{abb1} aufgebaut. Mit dem Unterschied, dass der Funktionsgenerator im Sweep-Betreib arbeitet. Dies bedeutet, dass die Frequenz der Errgerspannung nicht mehr konstant ist, sondern steigt in der Zeit $\Delta t = ...\,s$ von $\nu_0 = ..\,Hz$ auf $\nu_1 = ..\,Hz$. Mit der Verlauf der am Widertsand abfallenden spannung gemessen werden. Dabei wird die Zeitbasis des Oszilloskops so eingestellt, dass ein vollständiger Sweep auf dem Schirm zu sehen ist. Anfang und Ende dieses Zyklus entsprechen den Frequenzen $\nu_0$ und $\nu_1$.     
 
 
 
@@ -74,10 +112,15 @@ Die Perioden pro Schwebungsperiode wurden so genau wie möglich abgelesen. Der F
  Zur
 \subsection{Messung des Stroms in Abhängigkeit von der Erregerfrequenz}
 
-\section{Literatur- und Abbildungsverzeichnis}
+\section{Abbildungsverzeichnis}
 \begin{itemize}
-\item $[1]$:Quelle
+\item Abb. 1: entommen aus [1]
+\item Abb. 2 und 3: entommen aus [1] und geringfügig bearbeitet 
 \end{itemize}
+\section{Quellen}
+\begin{enumerate}[{[}1{]}]
+\item Anleitung: \textit{Versuch Nr.355 Gekoppelte Schwingkreise}, TU Dortmund 
+\end{enumerate}
 \section{Anhang}
 \begin{itemize}
 \item Tabellen
