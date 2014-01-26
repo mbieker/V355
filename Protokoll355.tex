@@ -3,10 +3,12 @@
 \usepackage{amsmath}
 \usepackage{a4wide}
 \usepackage{amsthm}
+\usepackage{url}
 \usepackage{amsbsy}
 \usepackage{amssymb}
 \usepackage{inputenc}
 \usepackage{rotating} 
+\usepackage[separate-uncertainty=true]{siunitx}
 \usepackage{graphicx}
 \usepackage{paralist}
 \usepackage{selinput}
@@ -49,9 +51,18 @@ und
 \nu^- =\frac1{2\pi\sqrt{L(\frac1C + \frac2{C_K})^-1}}.
 \label{nueminus}
 \end{equation}
+Da die Werte von $L$, $C$ und $C_K$ mit Messunsicherheiten behaftet sind, müssen, um einen Vergleich von Theorie und Experiment zu ermöglichen, die Gesamtfehler dieser Größen bekannt sein. Diese wurden im Folgenden mit Hilfe der Fehlerfortpflanzung nach \textsc{Gauss} berechnet:
+
+\begin{equation}
+\Delta \nu_+ = \sqrt{\frac{\sigma_{L}^{2}}{16 \pi^{2} C L^{3}} + \frac{\sigma_{C}^{2}}{16 \pi^{2} C^{3} L}}
+\end{equation}
+
+\begin{equation}
+\Delta \nu_- = \sqrt{\frac{\sigma_{L}^{2} \left(- \frac{1}{C_{K}} - \frac{1}{2 C}\right)^{2}}{4 \pi^{2} \left(L \left(\frac{2}{C_{K}} + \frac{1}{C}\right) - 1\right)^{3}} + \frac{L^{2} \sigma_{C_{K}}^{2}}{4 \pi^{2} C_{K}^{4} \left(L \left(\frac{2}{C_{K}} + \frac{1}{C}\right) - 1\right)^{3}} + \frac{L^{2} \sigma_{C}^{2}}{16 \pi^{2} C^{4} \left(L \left(\frac{2}{C_{K}} + \frac{1}{C}\right) - 1\right)^{3}}}
+\end{equation}
 
 \noindent
-Im Folgenden soll der Stromverlauf für die Anfangesbedingungen
+In diesem Abschnitt soll der Stromverlauf für die Anfangesbedingungen
 \[
 I_1(0) = I_0 \neq 0
 \] 
@@ -70,7 +81,7 @@ Vor Beginn der Messungen müssen die Resoanzfrequnezen beider Schwinkreise aufei
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.5]{Abb/abb1.png}
-\caption{Schaltung zur Kalibrierung der Schwingkriese}
+\caption{Diese Schaltung dient zum kalibrieren der Resonanzfrequenzen beider Schwingkreise. [1]}
 \label{abb1}
 \end{figure}
 In einem der Kreise ein Kondensator mit variabler Kapazität verbaut. Mit dem Sinusgenerator wird nun der Kreis mit konstanter Kapazi\"at angeregt. Zunächst wird mit dem Oszilloskop im YT-Betrieb die Frequenz ermittelt bei der die gemessene Spannung $U_R$ maximal wird. Dann wird das Oszilloskop in den XY-Modus umgeschaltet die Resonanzfrequnz $\nu_{res}$ bestimmt. Diese zeichnet sich dadurch aus, dass $U_R$ und die Generatorspannung $U_0$ in Phase liegen und daher die angezeigte Lissajouz-Figur eine Gerade ist. Danach wird der Sinusgenerator an den zweiten Teil des Schwingkreises angeschlossen und mit der Frequenz $\nu_{res}$ angeregt. Nun wird auch dieser Kreis durch Verändern der variablen Kapazität in Resonanz gebracht. Dazu werden wie zuvor Lissajouz-figuren verwendet. 
@@ -79,7 +90,7 @@ Für diesen Versuchsteil wird die Schaltung wie in Abbildung \ref{abb2} aufgebau
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.5]{Abb/abb2.png}
-\caption{Schaltung zur Messung des Verhältnisses von Schwebungs- zu Schwingungfrequenz }
+\caption{Diese Schaltung dient zur Messung des Verhältnisses von Schwebungs- zu Schwingungfrequenz. [2] }
 \label{abb2}
 \end{figure}
  Der linke Schwingkreis wird durch eine Rechteckspannung zu Schwingungen angeregt. Mit dem Oszilloskop wird nun die am Widerstand $R$ abfallende Spannung gemessen. So kann der im rechten Schwingkreis fließende Strom bestimmt. Bei verschieden Koppelkapazitäten $C_K$ wird nun das Verhältnis von Schwingungs- und Schwebungsfrequenz bestimmt. Dazu wird die Zahl $n$ der Schwingungsmaxima in einer Schwebungsperiode bestimmt. Es gilt:
@@ -91,12 +102,12 @@ Des Weiteren sollen die Frequenzen $\nu_-$ und $\nu_+$ bestimmt werden. Diese ze
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.5]{Abb/abb3.png}
-\caption{Schaltung zur Messung der Frequenzen der Fundamentalschwingungen}
+\caption{Diese Schaltung dient  zur Messung der Frequenzen der Fundamentalschwingungen. [2]}
 \label{abb3}
 \end{figure}
  So kann die Phasenbeziehung von $I$ und $U_0$ mit Hilfe von Lissajouz-Figuren untersucht werden. So werden $\nu_+$ und $\nu_-$ in Abhängikeit von $C_K$ bestimmt.
 \subsection{Messung des Stroms in Abhängigkeit von der Erregerfrequenz}
-Um den Verlauf des Stroms $I$ im Sekundärkreis bei in Abhängigkeit von der Erregerfrequenz darzustellen, wird die Schaltung wie in Abbildung \ref{abb1} aufgebaut. Mit dem Unterschied, dass der Funktionsgenerator im Sweep-Betreib arbeitet. Dies bedeutet, dass die Frequenz der Errgerspannung nicht mehr konstant ist, sondern steigt in der Zeit $\Delta t = ...\,s$ von $\nu_0 = ..\,Hz$ auf $\nu_1 = ..\,Hz$. Mit der Verlauf der am Widertsand abfallenden spannung gemessen werden. Dabei wird die Zeitbasis des Oszilloskops so eingestellt, dass ein vollständiger Sweep auf dem Schirm zu sehen ist. Anfang und Ende dieses Zyklus entsprechen den Frequenzen $\nu_0$ und $\nu_1$.     
+Um den Verlauf des Stroms $I$ im Sekundärkreis bei in Abhängigkeit von der Erregerfrequenz darzustellen, wird die Schaltung wie in Abbildung \ref{abb1} aufgebaut. Mit dem Unterschied, dass der Funktionsgenerator im Sweep-Betreib arbeitet. Dies bedeutet, dass die Frequenz der Errgerspannung nicht mehr konstant ist, sondern steigt in der Zeit $\Delta t =\SI{21}{\milli\second}$ von $\nu_0 = \SI{3,8}{\kilo\hertz}$ auf $\nu_1 = \SI{74,2}{\kilo\hertz}$. Mit der Verlauf der am Widertsand abfallenden spannung gemessen werden. Dabei wird die Zeitbasis des Oszilloskops so eingestellt, dass ein vollständiger Sweep auf dem Schirm zu sehen ist. Anfang und Ende dieses Zyklus entsprechen den Frequenzen $\nu_0$ und $\nu_1$.     
 
 
 
@@ -105,7 +116,7 @@ Um den Verlauf des Stroms $I$ im Sekundärkreis bei in Abhängigkeit von der Err
 
 Sofern nicht anders angegeben, wurden alle Fehler mit python uncertainties berechnet.
 \subsection{Vorbereitungen}
-Für die Justierung des Messaufbaus wurde mit der Grobmessung eine Frequenz von $(30.69\pm0.01)\,kHz$ ermittelt. Die feine Messung mit Hilfe der Lissajous-Figuren ergab eine Resonanzfrequenz von $(30.70\pm0.01) \, kHz$. Der mit L und C theoretisch berechnete Wert liegt bei $30.49 \, kHz$, mit einer Abweichung von $0.68 \%$ ausgezeichnet im Toleranzbereich. Allerdings wurde in der Berechnung des theoretischen Wertes die Kapazität der Spule schon berücksichtigt.
+Für die Justierung des Messaufbaus wurde mit der Grobmessung eine Frequenz von \SI{30,69+-0,01}{\kilo\hertz} ermittelt. Die feine Messung mit Hilfe der Lissajous-Figuren ergab eine Resonanzfrequenz von $\SI{30,70+-0,01}{\kilo\hertz}$. Der mit L und C theoretisch berechnete Wert liegt bei \SI{30,49}{\kilo\hertz}, mit einer Abweichung von \SI{0,68}{\percent} ausgezeichnet im Toleranzbereich. Allerdings wurde in der Berechnung des theoretischen Wertes die Kapazität der Spule schon berücksichtigt.
 \subsection{Messung von Schwebungs- und Schwingungsfrequenz}
 Die Perioden pro Schwebungsperiode wurden so genau wie möglich abgelesen. Der Fehler liegt bei maximal $\pm 0.5$ Perioden. Alle Werte sind der Tabelle \ref{AufgabeA} zu entnehmen.
 
@@ -196,14 +207,15 @@ $(9.99\pm0.30)$ & $(3.40\pm0.17)$ & $(9.5\pm0.17)$ & $(0.0212\pm0.0007)$ & $(0.0
 \section{Diskussion}
 Insgesamt sind alle Unsicherheiten innerhalb der üblichen Toleranzen. Die Messfehler beim Ablesen der Werte auf dem Bildschirm des Oszilloskopes wurden eher pessimistisch angenommen, sie sind auf jeden Fall groß genug angenommen. Die Abweichungen der experimentellen zu den theoretischen Frequenzen sind mit $<$ 10 \% tolerierbar.\newline
 In den anderen Versuchsteilen sind die Abweichungen alle gering.
-\section{Abbildungsverzeichnis}
-\begin{itemize}
-\item Abb. 1: entnommen aus [1]
-\item Abb. 2 und 3: entnommen aus [1] und geringfügig bearbeitet 
-\end{itemize}
-\section{Quellen}
+
+\section{Literatur- und Abbildungsverzeichnis}
 \begin{enumerate}[{[}1{]}]
-\item Anleitung: \textit{Versuch Nr.355 Gekoppelte Schwingkreise}, TU Dortmund 
+\item Entnommen aus: \\\textit{Versuch Nr.355 Gekoppelte Schwingkreise}, TU Dortmund\\
+Download am 09.01.14 unter:\\
+\url{http://129.217.224.2/HOMEPAGE/PHYSIKER/BACHELOR/AP/SKRIPT/V355.pdf}
+\item Geringfügig bearbeitete Grafiken aus:\\ \textit{Versuch Nr.355 Gekoppelte Schwingkreise}, TU Dortmund\\
+Download am 09.01.14 unter:\\
+\url{http://129.217.224.2/HOMEPAGE/PHYSIKER/BACHELOR/AP/SKRIPT/V355.pdf}
 \end{enumerate}
 \section{Anhang}
 \begin{itemize}
