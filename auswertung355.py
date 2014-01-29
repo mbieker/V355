@@ -6,9 +6,9 @@ Created on Tue Nov  5 10:44:42 2013
 #Using the magic encoding
 #-*- coding: utf-8 -*-
 from scipy import * 
-from matplotlib.pyplot import *
-import matplotlib as mp
-mp.rc('text', usetex=True)
+import matplotlib.pyplot as p
+
+
 from uncertainties import *
 import math
 
@@ -168,21 +168,80 @@ Cke = 2.03
 
 tab5 = [bcCk,peak1time,peak2time,peak1,peak2]
 
-header5 = [r"$\frac{C_K}{\si{\nano\farad}}$",r"$\frac{t_1}{\si{\mili\second}}$" ,r"$\frac{t_1}{\si{\mili\second}}$" , r"$\frac{U_1}{\si{\volt}}$" , r"$\frac{U_2}{\si{\volt}}$"] 
+header5 = [r"$\frac{C_K}{\si{\nano\farad}}$",r"$\frac{t_1}{\si{\mili\second}}$" ,r"$\frac{t_2}{\si{\mili\second}}$" , r"$\frac{U_1}{\si{\volt}}$" , r"$\frac{U_2}{\si{\volt}}$"] 
 def Lbetrag(f):
     return((1/(8*math.pi**2*Cke**2*48**2*(2*math.pi*L-1/(2*math.pi*f)*(1/C + 1/Cke))**2+(1/(2*math.pi*f*Cke)-2*math.pi*f*(2*math.pi*L-1/(2*math.pi*f)*(1/C + 1/Cke))**2+2*math.pi*f*48*22*Cke)**2)**0.5))
   
 print "Tabelle 5"
-print array(tab5).shape
+
 print make_LaTeX_table(array(tab5).T, header5)
 "###########################################################"
 
-tab6 = array([bcCk, peak1freq, peak2freq ,])
+tab6 = array([bcCk, peak1freq, peak2freq , I1, I2])
+header6 =  [r"$\frac{C_K}{\si{\nano\farad}}$",r"$\frac{\nu_1}{\si{\Hz}}$" ,r"$\frac{nu_2}{\si{\Hz}}$" , r"$\frac{I_1}{\si{\ampere}}$" , r"$\frac{I_2}{\si{\ampere}}$"] 
 
-"AUFGABENTEIL VORBEREITUNG UND JUSTIERUNG:"
-"Berechnung Vergleich der Resonanzfrequenzen:"
-fFein=30700
-fTheorie=30492.5990436
-vergleich=abs((fFein/fTheorie-1)*100)
-print "VORBEREITUNG VERGLEICH:"
-print vergleich
+
+print "Tabelle 6"
+
+print make_LaTeX_table(tab6.T, header6)
+
+
+
+# Zu jedem Versuchsteil ein Plot:
+
+# a) verhälntis vs c_k
+p.close()
+plot_cka = array([i.n for i in aCk])
+plot_vhexp = array([i.n for i in aVerhaeltnis])
+plot_vhth = array([i.n for i in verhaeltnis])
+p.plot(plot_cka,plot_vhexp, 'x', label= 'Messwerte')
+p.plot(plot_cka,plot_vhth, 'o', label = 'berechnete Werte')
+p.xlabel(r"$C_K$ in nF")
+p.ylabel(r"$\frac{\nu_{Schweb.}}{\overline{\nu}}$",rotation =0)
+p.legend()
+p.subplots_adjust(left=0.2)
+p.savefig('Abb/diag1.png')
+p.close()
+
+# nu_- vs C_k
+
+plot_ckb = array([ bcCk[i].n for i in  range(8)])
+
+nu_minus_range = array([1/(2*math.pi*(L.n*((1/C.n)+(2/i))**(-1)+L.n*Csp)**0.5) for i in 1e-9*linspace(2,10)])
+
+p.plot(plot_ckb[1:],exnueMinus,'x', label = "Messwerte")
+p.plot(linspace(2,10),nu_minus_range, label = "Theoriekurve")
+p.xlabel(r"$C_K$ in nF")
+p.ylabel(r"$\nu_-$ in Hz",rotation =0)
+p.legend()
+p.subplots_adjust(left=0.2)
+p.savefig('./Abb/diag2.png')
+p.close()
+
+nu_plus_range = array([1/(2*math.pi*(L.n*(C.n+Csp))**(0.5)) for i in 1e-9*linspace(2,10)])
+
+p.plot(plot_ckb[1:],exnuePlus,'x', label = "Messwerte")
+p.plot(linspace(2,10),nu_plus_range, label = "Theoriekurve")
+p.xlabel(r"$C_K$ in nF")
+p.ylabel(r"$\nu_+$ in Hz",rotation =0)
+p.legend()
+p.ylim(30.4e3,30.6e3)
+p.subplots_adjust(left=0.2)
+p.savefig('./Abb/diag3.png')
+p.close()
+# I_ vs. C_k
+
+
+plot_I_1 = array([i.n for i in I1])
+plot_I_2 = array([i.n for i in I2])
+
+p.plot(plot_ckb,plot_I_1, 'x', label = "$I_1$")
+p.plot(plot_ckb,plot_I_2, 'o', label = "$I_2$")
+p.legend()
+p.xlim(0,11)
+p.xlabel(r"$C_K$ in nF")
+p.ylabel(r"$I$ in A",rotation = 0)
+p.subplots_adjust(left=0.15)
+p.savefig('./Abb/diag4.png')
+
+p.close()

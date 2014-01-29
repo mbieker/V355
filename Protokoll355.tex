@@ -118,29 +118,53 @@ Sofern nicht anders angegeben, wurden alle Fehler mit python uncertainties berec
 \subsection{Vorbereitungen}
 Für die Justierung des Messaufbaus wurde mit der Grobmessung eine Frequenz von \SI{30,69+-0,01}{\kilo\hertz} ermittelt. Die feine Messung mit Hilfe der Lissajous-Figuren ergab eine Resonanzfrequenz von $\SI{30,70+-0,01}{\kilo\hertz}$. Der mit L und C theoretisch berechnete Wert liegt bei \SI{30,49}{\kilo\hertz}, mit einer Abweichung von \SI{0,68}{\percent} ausgezeichnet im Toleranzbereich. Allerdings wurde in der Berechnung des theoretischen Wertes die Kapazität der Spule schon berücksichtigt.
 \subsection{Messung von Schwebungs- und Schwingungsfrequenz}
-Die Perioden pro Schwebungsperiode wurden so genau wie möglich abgelesen. Der Fehler liegt bei maximal $\pm 0.5$ Perioden. Diese Werte sind der Tabelle \ref{tab1} zu entnehmen. Der bei $C_K$ angegebene Fehler ist ein auf die Werte umgerechneter Fehler von $\pm 3 \%$. Dieser ist an der Messapparatur vorgegeben.
+Die Perioden pro Schwebungsperiode wurden so genau wie möglich abgelesen. Der Fehler liegt bei maximal $\pm 0.5$ Perioden. Diese Werte sind der Tabelle 1 zu entnehmen. Der bei $C_K$ angegebene Fehler ist ein auf die Werte umgerechneter Fehler von $\pm 3 \%$. Dieser ist an der Messapparatur vorgegeben.
 
 \noindent
-Die Frequenz $\nu_{theo}^+$ ist konstant und beträgt \SI{30,493}{\kHz}. Diese wurde mit Formel \ref{nueplus} berechnet.  $\nu_{theo}^-$ wurde mit Formel \ref{nueminus} ermittelt. Der Mittelwert der beiden Frequenzen wurde mit $\overline{X}=\frac{1}{2}(X_a+X_b)$ ermittelt. Die Frequenz der Schwebung ist durch $\nu_{theo}^--\nu_{theo}^+$ gegeben. Diese theoretisch ermittelten Werte befinden sich in Tabelle \ref{tab2}.
-
-
+Die Frequenz $\nu_{theo}^+$ ist konstant und beträgt \SI{30,493}{\kHz}. Diese wurde mit Formel \ref{nueplus} berechnet.  $\nu_{theo}^-$ wurde mit Formel \ref{nueminus} ermittelt. Der Mittelwert der beiden Frequenzen wurde mit 
+\[
+\overline{\nu}=\frac{1}{2}(\nu_-+\nu_+)
+\]
+ermittelt. Die Frequenz der Schwebung ist durch $\nu_{theo}^--\nu_{theo}^+$ gegeben. Diese theoretisch ermittelten Werte befinden sich in Tabelle 2. Abbildung \ref{41} zeigt sowohl das experimentell ermittelte, als auch das berechnete Frequenzverhältnis in Abhängigkeit von der verwendeten Koppelkapazität.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.6]{Abb/diag1.png}
+\caption{Diese Abbildung zeigt das Verhältnis von Schwebungs- zu Schwingungsfrequenz für verschiedene Koppelkapazitäten}
+\label{41}
+\end{figure}
 
 \noindent
-Die die angebebene Abweichung bezieht sich auf den Unterschied vom experimentellen zum theoretischen Frequenzverhältnis.
+Die in der Tabelle 3 angebebene Abweichung bezieht sich auf den Unterschied vom experimentellen zum theoretischen Frequenzverhältnis.
 \subsection{Messung der Frequenzen der Fundamentalschwingungen}
-Für die Messung der Frequenzen wurden Lissajous-Figuren benutzt. Die Frequenzen des Signalgenerators wurden bei bestehen einer Geraden aufgenommen. Die Frequenzen werden in Tabelle \ref{tab4} mit den Theoriewerten aus 4.2 Verglichen.
-
-
-Die Berechnung zeigt eine Abweichung vom Theoriewert von jeweils ca. \SI{1}{\percent}
+Für die Messung der Frequenzen wurden Lissajous-Figuren benutzt. Die Frequenzen $\nu_+$ und $\nu_-$ wurden aufgenommen als die Generatorspannung und der Strom im Sekundärkreis jeweils gleich- oder gegenphasig verlaufen. Die Frequenzen werden in Tabelle 4 mit den Theoriewerten aus 4.2 Verglichen. Dies ist auch in den Abbildungen \ref{42} und \ref{43} dargestellt. Diese zeigen den Verlauf von $\nu_+$ und $\nu_-$ in Abhängigkeit von der verwendeten Koppelkpazität $C_K$ dar.
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.6]{Abb/diag2.png}
+\label{42}
+\caption{Diese Grafik zeigt die Frequenz $\nu_-$ für verschiedene Werte von $C_K$.}
+\end{figure}
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.6]{Abb/diag3.png}
+\caption{Diese Grafik zeigt die Frequenz $\nu_+$ für verschiedene Werte von $C_K$.}
+\label{43}
+\end{figure}
+\noindent
+Die Berechnungen zeigen eine Abweichung vom Theoriewert von jeweils ca. \SI{1}{\percent}
 \subsection{Messung des Stroms in Abhängigkeit von der Erregerfrequenz}
-Die in dieser Messreihe aufgenommenen Werte sind in Tabelle \ref{AufgabeC} ersichlich.
-
+Die in dieser Messreihe aufgenommenen Werte sind in Tabelle 5 ersichlich.
 Die bei den zeitlichen Abständen und der Spannung angegebenen Unsicherheiten entsprechen der Hälfte der kleinsten angezeigten Skaleneinteilungen des Oszilloskops. Aus den zeitlichen Abständen $d_1$ und $d_2$ kann mit folgenden Zusammenhängen die zugehörige Frequenz berechnet werden:
 \begin{itemize}
 \item $f_1 = \left( \frac{70400\cdot d_1}{\SI{21}{\milli\second}}+3800 \right)\si{\Hz}$
 \item $f_2 = \left( \frac{70400\cdot d_2}{\SI{21}{\milli\second}}+3800\right)\si{\Hz}$.
 \end{itemize}
-Die Frequenzen sind in Tabelle \ref{AufgabeC2} angegeben. Die Ströme wurden mit dem Ohmschen Gesetz berechnet. Allerdings wurde der Widerstand mit \SI{73}{\ohm}  statt mit \SI{48}{\ohm} angenommen, da weitere Dämpfungseffekte auftreten.
+Diese sind in Tabelle 6 angegeben. Die Ströme wurden mit dem Ohmschen Gesetz berechnet. Allerdings wurde der Widerstand mit \SI{73}{\ohm}  statt mit \SI{48}{\ohm} angenommen, da weitere Dämpfungseffekte zum Beispiel durch die in den Stromkreisen vorhandenen Spulen auftreten. Für die verschiedenen untersuchten Koppelkapazitäten wurden die jeweils gemessenen Ströme $I_1$ und $I_2$ in Abbildung \ref{44} aufgetragen.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.6]{Abb/diag4.png}
+\caption{Diese Grafik zeigt den Verlauf der Ströme $I_1$ und $I_2$ für verschiedene Werte von $C_K$.}
+\label{44}
+\end{figure}
 
 \section{Diskussion}
 Insgesamt sind alle Unsicherheiten innerhalb der üblichen Toleranzen. Die Messfehler beim Ablesen der Werte auf dem Bildschirm des Oszilloskopes wurden eher pessimistisch angenommen, sie sind auf jeden Fall groß genug angenommen. Die Abweichungen der experimentellen zu den theoretischen Frequenzen sind mit $<$ 10 \% tolerierbar.\newline
@@ -163,6 +187,8 @@ Download am 09.01.14 unter:\\
 
 \newpage
 \begin{table}[h]
+
+\label{tab1}
 \centering
 \begin{tabular}{SSS}
 \toprule
@@ -178,7 +204,6 @@ Download am 09.01.14 unter:\\
 \bottomrule
 \end{tabular}
 
-\label{tab1}
 \caption{Diese Tabelle zeigt das ermittelte Frequenzverh\"altnis in Abh\"angigkeit von der Koppelkapazit\"at.}
 
 
@@ -251,6 +276,24 @@ Download am 09.01.14 unter:\\
 \bottomrule
 \end{tabular}
 \label{tab5}
+\caption{}
+
+\centering
+\begin{tabular}{lllll}
+\toprule
+{$\frac{C_K}{\si{\nano\farad}}$} &{ $\frac{\nu_1}{\si{\Hz}}$} &{ $\frac{\nu_2}{\si{\Hz}}$} &{ $\frac{I_1}{\si{\ampere}}$} &{ $\frac{I_2}{\si{\ampere}}$ }\\
+\midrule
+ $1.010 \pm 0.030$  & $\left(3.40 \pm 0.17\right) \times 10^{4}$  & $\left(4.97 \pm 0.17\right) \times 10^{4}$  & $0.0167 \pm 0.0007$  & $0.0123 \pm 0.0007$ \\
+ $2.03 \pm 0.06$  & $\left(3.40 \pm 0.17\right) \times 10^{4}$  & $\left(4.34 \pm 0.17\right) \times 10^{4}$  & $0.0171 \pm 0.0007$  & $0.0140 \pm 0.0007$ \\
+ $3.00 \pm 0.09$  & $\left(3.40 \pm 0.17\right) \times 10^{4}$  & $\left(4.03 \pm 0.17\right) \times 10^{4}$  & $0.0171 \pm 0.0007$  & $0.0151 \pm 0.0007$ \\
+ $4.00 \pm 0.12$  & $\left(3.40 \pm 0.17\right) \times 10^{4}$  & $\left(3.90 \pm 0.17\right) \times 10^{4}$  & $0.0178 \pm 0.0007$  & $0.0158 \pm 0.0007$ \\
+ $5.02 \pm 0.15$  & $\left(3.40 \pm 0.17\right) \times 10^{4}$  & $\left(3.77 \pm 0.17\right) \times 10^{4}$  & $0.0182 \pm 0.0007$  & $0.0163 \pm 0.0007$ \\
+ $6.47 \pm 0.19$  & $\left(3.40 \pm 0.17\right) \times 10^{4}$  & $\left(3.70 \pm 0.17\right) \times 10^{4}$  & $0.0192 \pm 0.0007$  & $0.0178 \pm 0.0007$ \\
+ $8.00 \pm 0.24$  & $\left(3.40 \pm 0.17\right) \times 10^{4}$  & $\left(3.56 \pm 0.17\right) \times 10^{4}$  & $0.0200 \pm 0.0007$  & $0.0184 \pm 0.0007$ \\
+ $9.99 \pm 0.30$  & $\left(3.40 \pm 0.17\right) \times 10^{4}$  & $\left(3.56 \pm 0.17\right) \times 10^{4}$  & $0.0212 \pm 0.0007$  & $0.0196 \pm 0.0007$ \\
+\bottomrule
+\end{tabular}
+\label{}
 \caption{}
 \end{table}
 \end{document}
