@@ -6,15 +6,15 @@ Created on Tue Nov  5 10:44:42 2013
 #Using the magic encoding
 #-*- coding: utf-8 -*-
 from scipy import * 
-from matplotlib.pyplot import *
-import matplotlib as mp
-mp.rc('text', usetex=True)
+import matplotlib.pyplot as p
+
+
 from uncertainties import *
 import math
 
 
 def make_LaTeX_table(data,header, flip= 'false', onedim = 'false'):
-    output = '\\begin{tabular}{'
+    output = '\\begin{table}\n\\centering\n\\begin{tabular}{'
     #Get dimensions
     if(onedim == 'true'):
         if(flip == 'false'):
@@ -23,41 +23,39 @@ def make_LaTeX_table(data,header, flip= 'false', onedim = 'false'):
         
         else:
             data = array([data])
-        
-
+    
     row_cnt, col_cnt = data.shape
     header_cnt = len(header)
     
     if(header_cnt == col_cnt and flip== 'false'):
         #Make Format
-        output += '|'
+        
         for i in range(col_cnt):
-            output += 'c|'
-        output += '}\n\\hline\n'+ header[0]
+            output += 'l'
+        output += '}\n\\toprule\n{'+ header[0]
         for i in range (1,col_cnt):
-            output += ' & ' +  header[i]
-        output += ' \\\\\n\\hline\n'
+            output += '} &{ ' + header[i]
+        output += ' }\\\\\n\\midrule\n'
         for i in data:
-            output += str(i[0])
+            if(isinstance(i[0],(int,float,int32))):
+                output +=  str( i[0] ) 
+            else:
+                output += ' ${:L}$ '.format(i[0])
             for j in range(1,col_cnt):
-                output += ' & ' + str( i[j])
+                if(isinstance(i[j],(int,float,int32))):
+                    output += ' & ' + str( i[j])   
+                else:          
+                    output += ' & ${:L}$ '.format(i[j])                
+                
             output += '\\\\\n'
-        output += '\\hline\n\\end{tabular}\n'
+        output += '\\bottomrule\n\\end{tabular}\n\\label{}\n\\caption{}\n\\end{table}\n'
                             
         return output
+
     else:
-        if(row_cnt == header_cnt):
-            output += '|c|' + (col_cnt)*'c' + '|}\n\\hline\n'
-            for i in range(row_cnt):
-                output += header[i] 
-                for j in range(col_cnt):
-                    output += ' & ' + str(data[i][j])
-                output += '\\\\\n\\hline\n'
-                
-            output += '\\end{tabular}\n'  
-            return output
-        else:
-            return 'ERROR'
+        return 'ERROR'
+
+
 
     
 def err(data):
@@ -103,44 +101,37 @@ C = ufloat(0.0000000008051, 0.0000000000005)
 
 Csp = 0.000000000037
 
-print "Aufgabenteil A:"
-print "nuePlus:"
 nuePlus = 1/(2*math.pi*(L*(C+Csp))**(0.5))
-print nuePlus
 
-print "nueMinus:"
+
 nueMinus=1/(2*math.pi*(L*((1/C)+(2/Cka))**(-1)+L*Csp)**0.5)
-print nueMinus
 
-"nueMittel ist der Mittelwert der beiden Nüs"
-print "nueMittel:"
 nueMittel = (0.5*(nuePlus+nueMinus))
-print nueMittel
+schwebung =abs(nuePlus-nueMinus)
 
-print "schwebung:"
-schwebung = nueMinus - nuePlus
-print schwebung
 
-print "verhältnis:"
+
 verhaeltnis = nueMittel / schwebung
-print verhaeltnis
 
-print "abweichungen in Prozent:"
+n = range(1,8)
 abweichungen = abs(aVerhaeltnis/verhaeltnis*100-100)
-print abweichungen
 
-tab1 = array([Cka,aVerhaeltnis,nueMinus,nueMittel,schwebung,verhaeltnis,abweichungen])
-print make_LaTeX_table(tab1.T, [r'Ck',r'verhaeltnis',r'nieMinustheo',r'nueMittel',r'schwebung',r'verhältnis',r'abweichungen'])
 
-"###########################################################"
+table_1 = array([n,aCk,aVerhaeltnis])
+print "############################"
+print make_LaTeX_table(table_1.T, ["n",r"$\frac{C_K}{\si{\nano\farad}}$", r"Frequenzverh\"altnis"])
+print "###########################################################"
+table_2 = array([n,nueMittel,schwebung,verhaeltnis])
+table_3 = array([n,aVerhaeltnis,verhaeltnis, abweichungen])
+
+print make_LaTeX_table(table_2.T, ["","","",""])
+print "##############"
+print make_LaTeX_table(table_3.T, ["","","",""])
 
 "AUFGABENTEIL B"
 "Theoretisch berechnete Werte:"
 print "Aufgabenteil B:"
-print "nuePlus"
-print nuePlus
-print "nueMinus"
-print nueMinus
+
 "Experimentell bestimmte Werte:"
 "exnuePlus/Minus= gemessene Werte"
 exnuePlus=array([30490,30490,30490,30490,30490,30490,30490])
@@ -150,14 +141,9 @@ abwPlusTeilB=abs(exnuePlus/nuePlus)
 abwMinusTeilB=abs(exnueMinus/nueMinus)
 
 data = array([exnueMinus,exnuePlus])
-print make_LaTeX_table(data.T, [r'Spalte1',r'test'])
-print "Abweichung in Prozent von Nue+"
-print abwPlusTeilB
-print "Abweichung in Prozent von Nue-"
-print abwMinusTeilB
 
-tab2 = array([nueMinus,exnuePlus,exnueMinus,abwPlusTeilB,abwMinusTeilB])
-print make_LaTeX_table(tab2.T, [r'nueminus',r'explus',r'exminus',r'abwplus',r'abwminus'])
+tab4 = array([[bcCk[i],nueMinus[i],exnuePlus[i],exnueMinus[i],round(abwPlusTeilB[i].n,3),round(abwMinusTeilB[i].n,3)] for i in range(7)])
+print make_LaTeX_table(tab4, [r'nueminus',r'explus',r'exminus',r'abwplus',r'abwminus' , 's'])
 "###########################################################"
 
 "AUFGABENTEIL C"
@@ -165,41 +151,97 @@ print make_LaTeX_table(tab2.T, [r'nueminus',r'explus',r'exminus',r'abwplus',r'ab
 time=21
 flow=3800
 fhigh=74200
-peak1time=ufloat(9,0.5)
+peak1time=array([ufloat(9,0.5),ufloat(9,0.5),ufloat(9,0.5),ufloat(9,0.5),ufloat(9,0.5),ufloat(9,0.5),ufloat(9,0.5),ufloat(9,0.5)])
 peak2time=array([ufloat(13.7,0.5),ufloat(11.8,0.5),ufloat(10.9,0.5),ufloat(10.5,0.5),ufloat(10.1,0.5),ufloat(9.9,0.5),ufloat(9.5,0.5),ufloat(9.5,0.5)])
 
 print "Aufgabenteil C:"
 "Peakzeiten auf Frequenzen umrechnen:"
 peak1freq=(70400*peak1time/21)+3800
 peak2freq=(70400*peak2time/21) +3800
-print "peak1freq"
-print peak1freq
-print "peak2freq:"
-print peak2freq
+
 peak1=array([ufloat(1.22,0.05),ufloat(1.25,0.05),ufloat(1.25,0.05),ufloat(1.3,0.05),ufloat(1.33,0.05),ufloat(1.4,0.05),ufloat(1.46,0.05),ufloat(1.55,0.05)])
 peak2=array([ufloat(0.9,0.05),ufloat(1.02,0.05),ufloat(1.1,0.05),ufloat(1.15,0.05),ufloat(1.19,0.05),ufloat(1.3,0.05),ufloat(1.34,0.05),ufloat(1.43,0.05)])
 I1=(peak1/73)
 I2=(peak2/73)
-print "I1:"
-print I1
-print "I2:"
-print I2
-
-
- 
 Cke = 2.03
 
+
+tab5 = [bcCk,peak1time,peak2time,peak1,peak2]
+
+header5 = [r"$\frac{C_K}{\si{\nano\farad}}$",r"$\frac{t_1}{\si{\mili\second}}$" ,r"$\frac{t_2}{\si{\mili\second}}$" , r"$\frac{U_1}{\si{\volt}}$" , r"$\frac{U_2}{\si{\volt}}$"] 
 def Lbetrag(f):
     return((1/(8*math.pi**2*Cke**2*48**2*(2*math.pi*L-1/(2*math.pi*f)*(1/C + 1/Cke))**2+(1/(2*math.pi*f*Cke)-2*math.pi*f*(2*math.pi*L-1/(2*math.pi*f)*(1/C + 1/Cke))**2+2*math.pi*f*48*22*Cke)**2)**0.5))
   
+print "Tabelle 5"
 
+print make_LaTeX_table(array(tab5).T, header5)
 "###########################################################"
 
+tab6 = array([bcCk, peak1freq, peak2freq , I1, I2])
+header6 =  [r"$\frac{C_K}{\si{\nano\farad}}$",r"$\frac{\nu_1}{\si{\Hz}}$" ,r"$\frac{nu_2}{\si{\Hz}}$" , r"$\frac{I_1}{\si{\ampere}}$" , r"$\frac{I_2}{\si{\ampere}}$"] 
 
-"AUFGABENTEIL VORBEREITUNG UND JUSTIERUNG:"
-"Berechnung Vergleich der Resonanzfrequenzen:"
-fFein=30700
-fTheorie=30492.5990436
-vergleich=abs((fFein/fTheorie-1)*100)
-print "VORBEREITUNG VERGLEICH:"
-print vergleich
+
+print "Tabelle 6"
+
+print make_LaTeX_table(tab6.T, header6)
+
+
+
+# Zu jedem Versuchsteil ein Plot:
+
+# a) verhälntis vs c_k
+p.close()
+plot_cka = array([i.n for i in aCk])
+plot_vhexp = array([i.n for i in aVerhaeltnis])
+plot_vhth = array([i.n for i in verhaeltnis])
+p.plot(plot_cka,plot_vhexp, 'x', label= 'Messwerte')
+p.plot(plot_cka,plot_vhth, 'o', label = 'berechnete Werte')
+p.xlabel(r"$C_K$ in nF")
+p.ylabel(r"$\frac{\nu_{Schweb.}}{\overline{\nu}}$",rotation =0)
+p.legend()
+p.subplots_adjust(left=0.2)
+p.savefig('Abb/diag1.png')
+p.close()
+
+# nu_- vs C_k
+
+plot_ckb = array([ bcCk[i].n for i in  range(8)])
+
+nu_minus_range = array([1/(2*math.pi*(L.n*((1/C.n)+(2/i))**(-1)+L.n*Csp)**0.5) for i in 1e-9*linspace(2,10)])
+
+p.plot(plot_ckb[1:],exnueMinus,'x', label = "Messwerte")
+p.plot(linspace(2,10),nu_minus_range, label = "Theoriekurve")
+p.xlabel(r"$C_K$ in nF")
+p.ylabel(r"$\nu_-$ in Hz",rotation =0)
+p.legend()
+p.subplots_adjust(left=0.2)
+p.savefig('./Abb/diag2.png')
+p.close()
+
+nu_plus_range = array([1/(2*math.pi*(L.n*(C.n+Csp))**(0.5)) for i in 1e-9*linspace(2,10)])
+
+p.plot(plot_ckb[1:],exnuePlus,'x', label = "Messwerte")
+p.plot(linspace(2,10),nu_plus_range, label = "Theoriekurve")
+p.xlabel(r"$C_K$ in nF")
+p.ylabel(r"$\nu_+$ in Hz",rotation =0)
+p.legend()
+p.ylim(30.4e3,30.6e3)
+p.subplots_adjust(left=0.2)
+p.savefig('./Abb/diag3.png')
+p.close()
+# I_ vs. C_k
+
+
+plot_I_1 = array([i.n for i in I1])
+plot_I_2 = array([i.n for i in I2])
+
+p.plot(plot_ckb,plot_I_1, 'x', label = "$I_1$")
+p.plot(plot_ckb,plot_I_2, 'o', label = "$I_2$")
+p.legend()
+p.xlim(0,11)
+p.xlabel(r"$C_K$ in nF")
+p.ylabel(r"$I$ in A",rotation = 0)
+p.subplots_adjust(left=0.15)
+p.savefig('./Abb/diag4.png')
+
+p.close()
